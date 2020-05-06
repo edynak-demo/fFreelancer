@@ -11,7 +11,10 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first
 
-    if user
+     if user
+      if !user.provider
+        user.update(uid: auth.uid, provider: auth.provider, image: auth.info.image)
+      end
       return user
     else
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -20,9 +23,9 @@ class User < ApplicationRecord
         user.full_name = auth.info.name   # assuming the user model has a name
         user.image = auth.info.image # assuming the user model has an image
 
-
         user.uid = auth.uid
         user.provider = auth.provider
+
 
       end
     end
