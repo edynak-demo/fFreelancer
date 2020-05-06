@@ -9,8 +9,8 @@ module ApplicationHelper
         end
     end
 
-    def gig_cover(gig)
-        if gig.photos.attached?
+    def service_cover(service)
+        if service.photos.attached?
             url_for(gig.photos[0])
         else
             ActionController::Base.helpers.asset_path('icon_default_image.png')
