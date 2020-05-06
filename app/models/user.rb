@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
 
+  has_one_attached :avatar        
+
   validates :full_name, presence: true, length: {maximum: 50}
 
   def self.from_omniauth(auth)
