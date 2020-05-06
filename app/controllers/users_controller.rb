@@ -4,6 +4,10 @@ class UsersController < ApplicationController
   def dashboard
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def update
     @user = current_user
     if @user.update_attributes(current_user_params)
@@ -16,6 +20,6 @@ class UsersController < ApplicationController
 
   private
   def current_user_params
-    params.require(:user).permit(:from, :about, :status, :language)
+    params.require(:user).permit(:from, :about, :status, :language, :avatar)
   end
 end

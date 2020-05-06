@@ -36,22 +36,27 @@
         </div>
       </div>
       <% else %>
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-item"><%= current_user.full_name %></a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        <figure class="image is-24x24 m-r-5">
+                            <%= image_tag avatar_url(current_user), class: "is-rounded" %>
+                        </figure>
+                        <%= current_user.full_name %>
+                    </a>
 
-        <div class="navbar-dropdown">
-          <%= link_to  "Profile", edit_user_registration_path, class: "navbar-item" %>
-          <a href="" class="navbar-item">Dashboard</a>
-          <hr class="navbar-divider">
-          <%= link_to  "Log out", destroy_user_session_path, method: :delete, class: "navbar-item" %>
-        </div>
-      </div>
-      <% end %>
+                    <div class="navbar-dropdown">
+                        <%= link_to  "Profile", edit_user_registration_path, class: "navbar-item" %>
+                        <%= link_to 'Dashboard', dashboard_path, class: "navbar-item" %>
+                        <hr class="navbar-divider">
+                        <%= link_to  "Log out", destroy_user_session_path, method: :delete, class: "navbar-item" %>
+                    </div>
+                </div>
+            <% end %>
     </div>
   </div>
 </nav>
 
-<nav class="navbar has-shadow">
+<nav class="navbar has-shadow" style="z-index: 5">
     <div class="container">
         <div class="navbar">
             <%= link_to 'Dashboard', dashboard_path, class: "navbar-item" %>
@@ -62,14 +67,14 @@
                 </div>
             </div>
             <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">Services</a>
+                <a class="navbar-link">Contractors</a>
                 <div class="navbar-dropdown">
                     <a class="navbar-item">Post Request</a>
                     <a class="navbar-item">Manage Requests</a>
                 </div>
             </div>
             <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">Service Requests</a>
+                <a class="navbar-link">Contractor Requests</a>
                 <div class="navbar-dropdown">
                     <a class="navbar-item">Active Request</a>
                     <a class="navbar-item">Offers Sent</a>
