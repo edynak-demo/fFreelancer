@@ -1,0 +1,24 @@
+<div class="step-content has-text-centered <%= 'is-active' if @step == 5 %>">
+    <div>
+        <%= hidden_field_tag 'active', 'true' if @step == 5 %>
+        <strong class="is-size-2">Almost there...</strong>
+        <p>Let's publish your Service and get some buyers rolling in.</p>
+    </div>
+</div>
+
+<div class="field is-grouped is-grouped-centered m-t-25">
+    <p class="control <%= 'is-hidden' if @step <= 1 %>">
+        <%= link_to 'Back', edit_service_path(@service, step: @step - 1), class: "button is-danger" %>
+    </p>
+
+    <p class="control">
+        <% if @step != 5 %>
+            <%= f.submit 'Save & Continue', class: "button is-link" %>
+        <% else %>
+            <%= link_to 'Publish', service_path(@service.id, service: {active: true}, step: @step), 
+                        method: :put, 
+                        data: {confirm: "Do you want to publish this service?"},
+                        class: "button is-link" %>
+        <% end %>
+    </p>
+</div>
