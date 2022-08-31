@@ -16,7 +16,7 @@ gem 'bulma-rails', '~> 0.8.0'
 gem 'bulma-extensions-rails', '~> 6.2', '>= 6.2.7'
 gem 'devise', '~> 4.7', '>= 4.7.1'
 
-gem 'omniauth', '~> 1.9', '>= 1.9.0'
+gem 'omniauth', '~> 1.9'
 gem 'omniauth-facebook', '~> 5.0.0'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
